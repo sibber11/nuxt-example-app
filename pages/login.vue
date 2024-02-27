@@ -4,19 +4,20 @@
       <div class="text-center text-2xl font-bold mb-8">
         Website Logo
       </div>
-    <form class="flex flex-col gap-4" @submit.prevent="submit">
-      <TextInput label="User Name" v-model="form.name" />
-      <TextInput label="Password" v-model="form.password" type="password" />
-      <CustomButton class="h-[42px]">Login</CustomButton>
-    </form>
-  </div>
+      <form class="flex flex-col gap-4" @submit.prevent="submit">
+        <TextInput label="User Name" v-model="form.name" name="email" />
+        <TextInput label="Password" v-model="form.password" type="password" />
+        <CustomButton class="h-[42px]">Login</CustomButton>
+      </form>
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 
 definePageMeta({
-  middleware: ['guest']
+  middleware: ['guest'],
+  layout: 'login'
 })
 
 const form = ref({
@@ -27,14 +28,7 @@ const form = ref({
 const auth = useMyAuthStore();
 
 async function submit() {
-  const post = await $fetch('/api/login', {
-    method: 'post', 
-    body: form.value,
-    onResponse({ request, response, options }) {
-      auth.login(response._data.token)
-      navigateTo('/');
-    },
-  })
+  auth.login(form.value.name, form.value.password);
 }
 </script>
 

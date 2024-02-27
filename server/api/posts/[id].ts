@@ -1,13 +1,9 @@
 import { postsArray } from "."
 
 export default defineEventHandler((event) => {
-  const id = parseInt(getRouterParam(event, 'id'));
-
-  if (!Number.isInteger(id)) {
-    throw createError({
-      statusCode: 400,
-      statusMessage: 'ID should be an integer',
-    })
+  const id = getRouterParam(event, 'id');
+  if (id) {
+    let intId = parseInt(id);
+    return postsArray.find(post=>post.id == intId);
   }
-  return postsArray[id];
 })

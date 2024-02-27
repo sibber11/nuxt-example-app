@@ -8,7 +8,17 @@ export default defineNuxtConfig({
     viewer: false,
     exposeConfig: true,
     config:{
-      plugins: [form]
+      plugins: [form],
+      safelist:[
+        'bg-gray-100'
+      ]
+    }
+  },
+  app:{
+    head:{
+      bodyAttrs:{
+        class: 'bg-gray-100'
+      }
     }
   }
 })
