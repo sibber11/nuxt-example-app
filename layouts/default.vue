@@ -5,7 +5,7 @@
       <NuxtLink to="/posts" class="p-2 font-bold">
         Posts
       </NuxtLink>
-      <NuxtLink to="/posts" class="p-2 font-bold">
+      <NuxtLink to="/products" class="p-2 font-bold">
         Products
       </NuxtLink>
     </div>
@@ -13,6 +13,9 @@
       <CustomButton @click="auth.logout()">
         Logout
       </CustomButton>
+      <NuxtLink to="/cart" class="p-2 px-3 rounded font-bold bg-slate-500 text-white">
+        Cart
+      </NuxtLink>
     </div>
   </div>
   <div class="container mx-auto">

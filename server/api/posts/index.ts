@@ -1,5 +1,5 @@
 export default defineEventHandler(async (event) => {
-  return postsArray;
+  return postsArray.slice(0,10);
 })
 
 export const postsArray = [
